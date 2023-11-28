@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+
+SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,11 +28,11 @@ SECRET_KEY = 'django-insecure-=&gcnu@!32voidp*$*vf4hob7)mr-w%x1jzs^ovt27-&2b&tv2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 # Application definition
-SITE_ID = 1
+# SITE_ID = 1
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'TaskAPI',
+    'TaskAPIFrontend',
      #third party apps
     'rest_framework',
     #  "authentication.apps.AuthenticationConfig",
@@ -87,10 +91,21 @@ WSGI_APPLICATION = 'TaskManagementApp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ToDoApp',
+        'USER': 'postgres',
+        'PASSWORD': 'ihame12',
+        'PORT': '5432',
+        'HOST': 'localhost'
     }
 }
 
@@ -148,3 +163,6 @@ REST_FRAMEWORK = {
     ],
    
 }
+# TEMPLATE_DIRS = (
+#     os.path.join(SETTINGS_PATH, 'templates'),
+# )

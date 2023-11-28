@@ -5,6 +5,8 @@ from dj_rest_auth.registration.views import RegisterView
 from dj_rest_auth.views import LoginView, LogoutView, UserDetailsView
 
 urlpatterns = [
+
+    #APIs
     path('', ListTask.as_view(), name='display'),
     path('create/', TaskCreate.as_view(), name='create'),
     path('delete/<int:pk>', TaskDelete.as_view(), name='delete'),
@@ -15,5 +17,13 @@ urlpatterns = [
     path("register/", RegisterView.as_view(), name="rest_register"),
     path("login/", LoginView.as_view(), name="rest_login"),
     path("logout/", LogoutView.as_view(), name="rest_logout"),
-    path("user/", UserDetailsView.as_view(), name="rest_user_details")
+    path("user/", UserDetailsView.as_view(), name="rest_user_details"),
+   
+      #UIs
+    path('home/', Tasklist1.as_view(), name='tasks'),
+    path('task-display/<int:pk>/', TaskDetails1.as_view(), name='tasks'),
+    path('task-create/', TaskCreate1.as_view(), name='task-create'),
+    path('task-update/<int:pk>/', TaskUpdate1.as_view(), name='task-update'),
+    path('task-delete/<int:pk>/', TaskDelete1.as_view(), name='task-delete')
+
 ]

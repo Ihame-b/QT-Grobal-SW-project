@@ -1,0 +1,23 @@
+<a href="{% url 'create' %}"> add Task</a>
+
+<table style="align-items: center;">
+    <tr>
+        <th>Item</th>
+        <th></th>
+        <th></th>
+    </tr>
+        {% for task in Task %}
+        <tr>
+            <td>{{task.title}}</td>
+            
+            <td> <a href="{% url 'search' task.id %}">Search</a></td>
+            <td> <a href="{% url 'update' task.id %}">Edit</a></td>
+            <td> <a href="{% url 'delete' task.id %}">Delete</a></td>
+        </tr>
+        </tr>
+        {% empty %}
+        <h3>No Item in list</h3>
+
+        {% endfor %}
+    
+</table>
